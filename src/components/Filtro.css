@@ -1,0 +1,21 @@
+.filtro
+{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.filtro label
+{
+    font-size: large;
+}
+
+.filtro select
+{
+    margin-left: 10px;
+}
+
+.filtro input[type="range" i]
+{
+    margin: 0px 10px;
+}
