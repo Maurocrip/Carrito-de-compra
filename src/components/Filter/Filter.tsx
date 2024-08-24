@@ -1,22 +1,27 @@
 import { useContext, useId } from "react";
-import { filterProvider } from "../context/FilterContext";
-import "./Filtro.css";
+import { filterProvider } from "../../context/FilterContext";
+import "./Filter.css";
+import { CategoryProducts } from "../../Const/Category";
+import { FilterHookReturnType } from "../../Type/FilterHookReturnType";
 
 export default function Filter() {
-  const { setFilter, filter } = useContext(filterProvider);
+  const context = useContext(filterProvider);
+  if (!context) {
+    throw new Error("MyComponent must be used within a TodoListProvider");
+  }
   const idPrice = useId();
   const idCategory = useId();
 
   function HandleChange(e: React.ChangeEvent<HTMLInputElement>) {
     let minPrice: number = parseInt(e.target.value);
-    setFilter((prevFilter: any) => ({
+    (context as FilterHookReturnType).setFilter((prevFilter) => ({
       ...prevFilter,
       minPrice: minPrice,
     }));
   }
 
   function HandleChangeCategory(e: React.ChangeEvent<HTMLSelectElement>) {
-    setFilter((prevFilter: any) => ({
+    (context as FilterHookReturnType).setFilter((prevFilter) => ({
       ...prevFilter,
       category: e.target.value,
     }));
@@ -31,20 +36,22 @@ export default function Filter() {
             type="range"
             id={idPrice}
             min={0}
-            value={filter.minPrice}
+            value={context.filter.minPrice}
             max={1000}
             onChange={HandleChange}
           />
-          <small>{filter.minPrice}</small>
+          <small>{context.filter.minPrice}</small>
         </div>
         <div>
           <label htmlFor={idCategory}>Categoria</label>
           <select onChange={HandleChangeCategory} id={idCategory}>
-            <option value="all">todos</option>
-            <option value="women's clothing">Ropa de mujer</option>
-            <option value="electronics">Electrodomesticos</option>
-            <option value="jewelery">Joyeria</option>
-            <option value="men's clothing">Ropa de hombre</option>
+            {CategoryProducts.map((elemet, index) => {
+              return (
+                <option key={index} value={elemet.value}>
+                  {elemet.name}
+                </option>
+              );
+            })}
           </select>
         </div>
       </div>

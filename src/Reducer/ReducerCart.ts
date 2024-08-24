@@ -1,43 +1,56 @@
-import { ProductoCarrito } from "../Interface/ProductoCarritoInterface";
+
+import { ProductoCarrito } from "../Type/ProductoCarrito";
+import { CarritoAction } from "../Type/ReducerTypes";
 
 function updateLocalStorage(state : Array<ProductoCarrito>){
     window.localStorage.setItem("cart",JSON.stringify(state))
 }
 
-export function ReducerCart(state: Array<ProductoCarrito>, action: any)
+export function ReducerCart(state: Array<ProductoCarrito>, action: CarritoAction)
 {
-    let product: any = action.payLoad;
-    let retorno: any = state
+    let carritoComodin: Array<ProductoCarrito> = [...state];
 
     switch (action.type) {
         case "ADD_PRODUCT":
-  
+            let product = action.payload;
             let indexProduct: number = state.findIndex(
                 (element) => element.id == product.id
             );
-            let carritoComodin: Array<ProductoCarrito> = [...state];
+
             if (indexProduct >= 0) {
                 carritoComodin[indexProduct].cantity += 1;
             } else {
                 carritoComodin.push({
-                id: product.id,
-                name: product.title,
-                price: product.price,
-                image: product.image,
-                cantity: 1,
+                    ...product,
+                    cantity: 1,
                 });
             }
 
-            retorno = carritoComodin;
-            break;
+        break;
         case "REMOVE_PRODUCT":
-            retorno = state.filter((productoArray) => productoArray.id != product.id);
+            carritoComodin = carritoComodin.filter((productoArray) => productoArray.id != action.payload.id);
+            break;
+
+        case "DISCOUNT_PRODUCT":
+            let index: number = carritoComodin.findIndex(
+                (element) => element.id == action.payload.id
+            );
+            if (index >= 0) {
+                if(carritoComodin[index].cantity>1)
+                {
+                    carritoComodin[index].cantity -= 1;
+                }
+                else
+                {
+                    carritoComodin= carritoComodin.filter((productoArray) => productoArray.id != action.payload.id);
+                }
+            }
             break;
 
         case "CLEAN":
-            retorno = [];
+            carritoComodin = [];
             break;
       }
-    updateLocalStorage(retorno);
-    return retorno;
+    updateLocalStorage(carritoComodin);
+    return carritoComodin;
 }

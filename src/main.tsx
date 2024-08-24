@@ -10,6 +10,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 );
 
 /*
+
+API: https://api.escuelajs.co/api/v1/products
+
 1. Ecommerce
    - Muestra una lista de productos que vienen de un JSON
    - Añade un filtro por categoría

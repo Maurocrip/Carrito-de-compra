@@ -1,21 +1,26 @@
 import "./App.css";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import productsJson from "./Productos.json";
-import Products from "./components/Products";
 import { useContext } from "react";
 import { filterProvider } from "./context/FilterContext";
-import Carrito from "./components/Carrito";
 import CarritoProvider from "./context/CaritoContext";
+import ListProducts from "./components/ListProducts/ListProducts";
+import Carrito from "./components/Carrito/Carrito";
+import { ProductInterface } from "./Interface/ProductInterface";
 
 function App() {
-  const provider = useContext(filterProvider);
-
+  const context = useContext(filterProvider);
+  if (!context) {
+    throw new Error("MyComponent must be used within a TodoListProvider");
+  }
   return (
     <>
       <Header></Header>
       <CarritoProvider>
         <Carrito></Carrito>
-        <Products productos={provider.Filtro(productsJson)}></Products>
+        <ListProducts
+          productos={context.Filtro(productsJson as Array<ProductInterface>)}
+        ></ListProducts>
       </CarritoProvider>
     </>
   );
