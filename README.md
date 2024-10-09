@@ -24,7 +24,3 @@ Si tienes preguntas o sugerencias, no dudes en ponerte en contacto conmigo:
 
 - **Email**: mauro@example.com
 - **GitHub**: [Mauro Racioppi](https://github.com/Maurocrip)
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
