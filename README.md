@@ -1,30 +1,30 @@
-# React + TypeScript + Vite
+# Carrito de Compra 🛒
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositorio contiene una aplicación web que simula un carrito de compras en línea, desarrollada con [Vite](https://vitejs.dev/), [React](https://reactjs.org/) y [TypeScript](https://www.typescriptlang.org/). La aplicación permite a los usuarios navegar por productos, agregarlos al carrito y realizar un proceso de compra simulado.
 
-Currently, two official plugins are available:
+## Características 🛠️
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Navegación intuitiva de productos.
+- Agregar y eliminar productos del carrito.
+- Visualización del total de la compra.
+- Simulación del proceso de compra.
 
-## Expanding the ESLint configuration
+## Demo 🎥
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Puedes ver la aplicación en acción en el siguiente enlace: [Carrito de Compra](https://carritodelacompra.vercel.app)
 
-- Configure the top-level `parserOptions` property like this:
+## Uso 📲
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. Abre tu navegador y dirígete al enlace de la demo.
+2. Navega por los productos, agrégales al carrito y realiza una compra simulada.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Contacto
+
+Si tienes preguntas o sugerencias, no dudes en ponerte en contacto conmigo:
+
+- **Email**: mauro@example.com
+- **GitHub**: [Mauro Racioppi](https://github.com/Maurocrip)
+
+## Licencia 📄
+
+Este proyecto está bajo la Licencia MIT - consulta el archivo [LICENSE](LICENSE) para más detalles.
