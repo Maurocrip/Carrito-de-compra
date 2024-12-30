@@ -1,7 +1,6 @@
 import { useContext, useId } from "react";
 import "./Carrito.css";
 import { carritoContex } from "../../context/CaritoContext";
-import { CarritoHookReturnType } from "../../Type/CarritoHookReturnType";
 import ProductCarrito from "../ProductCarrito/ProductCarrito";
 
 export default function Carrito() {
@@ -10,9 +9,9 @@ export default function Carrito() {
     throw new Error("MyComponent must be used within a TodoListProvider");
   }
   let menuId = useId();
-
+  let { ClearCart } = context;
   function OnClickEvente() {
-    (context as CarritoHookReturnType).ClearCart();
+    ClearCart();
   }
   return (
     <>

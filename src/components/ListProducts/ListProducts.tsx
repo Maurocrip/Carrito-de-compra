@@ -2,7 +2,6 @@ import { useContext } from "react";
 import "./ListProducts.css";
 import { carritoContex } from "../../context/CaritoContext";
 import { ProductInterface } from "../../Interface/ProductInterface";
-import { CarritoHookReturnType } from "../../Type/CarritoHookReturnType";
 import Product from "../Product/Product";
 
 type Props = {
@@ -14,11 +13,10 @@ function ListProducts({ productos }: Props) {
   if (!context) {
     throw new Error("MyComponent must be used within a TodoListProvider");
   }
+  let { carrito } = context;
 
   function CheckProdct(product: ProductInterface): boolean {
-    let retorno = (context as CarritoHookReturnType).carrito.some(
-      (elemet) => elemet.id == product.id
-    );
+    let retorno = carrito.some((elemet) => elemet.id == product.id);
     return retorno;
   }
 
